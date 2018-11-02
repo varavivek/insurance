@@ -1,0 +1,15 @@
+<button (click)='validate()'>Login</button>
+
+<form [formGroup]="LoginForm" (ngSubmit)='validate()'>
+  <ng-container *ngFor='let eachConfig of formConfig'>
+    <div>
+      <label>{{eachConfig.label}}</label>
+      <div [ngSwitch]='eachConfig.type'>
+        <input *ngSwitchCase="'text'" type={{eachConfig.type}} name="eachConfig.name" formControlName={{eachConfig.name}}>
+        <input *ngSwitchCase="'password'" type={{eachConfig.type}} name="eachConfig.name" formControlName={{eachConfig.name}}>
+        <input *ngSwitchCase="'radio'" type={{eachConfig.type}} name="eachConfig.name" formControlName={{eachConfig.name}}>
+      </div>
+    </div>
+  </ng-container>
+  <input type="submit" value="Register">
+</form>

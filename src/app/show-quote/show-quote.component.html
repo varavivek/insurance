@@ -1,0 +1,10 @@
+<div class="form-group">
+<label> Enter your Age : </label>
+<input type='text' [(ngModel)]='age' (blur)='changeStatus()'>
+<input type='button' [disabled]='isDisabled' value="Show Policies" (click)='showPolicy()'>
+
+<p>Age : {{age}}</p>
+<p>Suggested Policy : {{suggestedPolicy}}</p>
+
+
+</div>

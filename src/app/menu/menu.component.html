@@ -1,0 +1,7 @@
+<ul class="breadcrumb">
+  <li *ngFor='let eachLink of links' class="nav-item">
+    <a [href]="eachLink.linkRef" class="nav-link">{{eachLink.linkText}}</a>
+  </li>
+  <li *ngIf='showLogin'class="nav-item"><a href="#" appHighlight>Login</a></li>
+  <li *ngIf='showLogout'class="nav-item"><a href="#" appHighlight>Logout</a></li>
+</ul>

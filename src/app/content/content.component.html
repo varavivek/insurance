@@ -1,0 +1,22 @@
+<div class="container">
+  <app-show-policy></app-show-policy>
+  <h2>{{contentTitle}}</h2>
+  <div class="row">
+    <div class="col-sm-6" *ngFor='let eachPolicy of policies'>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{eachPolicy.policyName}}</h5>
+          <p class="card-text">{{eachPolicy.policyDescription}}</p>
+          <a href="#" class="btn btn-primary">Know more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4>Testimonies !!!</h4>
+  
+  <app-testimony></app-testimony>
+  {{feedback1}} <br> {{feedback2}}
+  <app-show-advisors></app-show-advisors>
+  <app-show-quote></app-show-quote>
+  <app-search-branch></app-search-branch>
+</div>

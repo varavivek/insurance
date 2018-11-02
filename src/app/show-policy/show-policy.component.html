@@ -1,0 +1,57 @@
+<form #f="ngForm" (ngSubmit)="submit(f.value)" *ngIf="showForm" ngNativeValidate>
+  <div class='form-group'>
+    <label for="id">Id</label>
+    <input type="number" name="id" [(ngModel)]='policyData.id' class='form-control' required>
+  </div>
+  <div class='form-group'>
+    <label for="policyHolderName">Policy Holder Name : </label>
+    <input type="text" name="policyHolderName" [(ngModel)]='policyData.policyHolderName' class='form-control' required>
+  </div>
+  <div class='form-group'>
+    <label for="policyAmount">Policy Amount</label>
+    <input type="number" name="policyAmount" [(ngModel)]='policyData.policyAmount' class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for="maturityDate">Maturity Date</label>
+    <input data-provide="datepicker" type="date" name="maturityDate" [(ngModel)]='policyData.maturityDate' class='form-control'>
+  </div>
+  <div class='form-group'>
+    <input type="submit" [value]='buttonText' >
+  </div>
+</form>
+
+
+
+
+Enter Seach Name :
+<input [(ngModel)]='searchString' type="text">
+
+<button (click)="showFormFunction()" [ngClass]="{ 
+  'fa':true,
+  'fa-hand-o-down':showForm,
+  'fa-hand-o-up':!showForm}">
+  Toggle Form</button>
+<table class="table table-striped table-dark">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Maturity Date</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eachAdvisor of policyList | searchFilter:'policyHolderName':searchString |paginate:{itemsPerPage:3,currentPage:p}">
+      <th scope="row">{{eachAdvisor.id}}</th>
+      <td>{{eachAdvisor.policyHolderName | uppercase}}</td>
+      <td>{{eachAdvisor.policyAmount | currency:'USD':'symbol'}}</td>
+      <td>{{eachAdvisor.maturityDate | date : 'mediumDate'}}</td>
+      <td><i class="fa fa-2x fa-edit" (click)='update(eachAdvisor)'></i></td>
+      <td><i class="fa fa-2x fa-remove" (click)='delete(eachAdvisor)'></i></td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>

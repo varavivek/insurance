@@ -1,0 +1,16 @@
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let eachAdvisor of advisorList'>
+        <th scope="row">{{eachAdvisor.id}}</th>
+        <td>{{eachAdvisor.name}}</td>
+        <td>{{eachAdvisor.mobileNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
